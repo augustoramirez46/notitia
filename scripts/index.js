@@ -29,7 +29,6 @@
 
             bl1 = new Blob(app, 500, 500, 300, az);
 
-
         }
 
         app.draw = function () {
