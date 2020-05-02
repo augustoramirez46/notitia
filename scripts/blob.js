@@ -6,6 +6,8 @@ class Blob {
         this.size = size;
         this.color = color;
 
+        this.leftOffs = 415;
+        this.rightOffs = 1654;
     }
 
     draw() {
@@ -14,50 +16,89 @@ class Blob {
             app,
             pos,
             size,
-            color
+            color,
+            leftOffs
         } = this;
 
-        var h1 = app.createVector(0, size * -.75);
-        h1.rotate(app.PI * app.frameCount / 100);
-        h1.add(pos);
-        h1.add(size * -.5, 0);
+        // izq 
+        this.leftOffs += 0.01;
+        var left = this.getSideVars(this.leftOffs, -.5);
 
-        app.fill(0);
-        app.ellipse(h1.x, h1.y, 50);
-
-
-        var pts = [
-            app.createVector(pos.x - size / 2, pos.y), // pt izq ab
-            app.createVector(pos.x - size / 2, pos.y + size * .75), // manija izq ab
-            app.createVector(pos.x + size / 2, pos.y + size * .75), // manija der ab
-            app.createVector(pos.x + size / 2, pos.y), // pt der ab
-
-            app.createVector(pos.x - size / 2, pos.y - size * .75), // manija izq arr
-            app.createVector(pos.x + size / 2, pos.y - size * .75), // manija der arr
-        ];
+        // der
+        this.rightOffs += 0.01;
+        var right = this.getSideVars(this.rightOffs, .5);
 
         app.fill(this.color);
-        app.stroke(0);
-        app.strokeWeight(4);
+        app.stroke(this.color);
+        /*
+        app.strokeWeight(app.noise(rotLeft) * app.random(1, 15));
+         */
+
+        // mitad abajo
         app.bezier(
-            pts[0].x, pts[0].y,
-            pts[1].x, pts[1].y,
-            pts[2].x, pts[2].y,
-            pts[3].x, pts[3].y,
+            left.center.x, left.center.y,
+            left.bottom.x, left.bottom.y,
+            right.bottom.x, right.bottom.y,
+            right.center.x, right.center.y,
         );
 
+        left.center.y++;
+        left.top.y++;
+        right.center.y++;
+        right.top.y++;
+
+        // mitad arriba
         app.bezier(
-            pts[0].x, pts[0].y,
-            pts[4].x, pts[4].y,
-            pts[5].x, pts[5].y,
-            pts[3].x, pts[3].y,
+            left.center.x, left.center.y,
+            left.top.x, left.top.y,
+            right.top.x, right.top.y,
+            right.center.x, right.center.y,
 
         );
-        app.noStroke();
-        app.fill(255);
-        for (let pt of pts) {
-            app.ellipse(pt.x, pt.y, 20, 20);
+
+    }
+
+    getSideVars(offset, mov) {
+
+        var {
+            app,
+            pos,
+            size,
+            color,
+            leftOffs
+        } = this;
+
+        var rot = app.noise(offset) * app.PI / 4 - app.PI / 8;
+
+        // var leftDeltaRot = app.random(-.2, .27);
+
+
+
+        var bottom = app.createVector(0, size * .5 + app.noise(offset + 123483) * 100);
+        bottom.rotate(rot);
+        bottom.add(pos);
+        bottom.add(size * mov, 0);
+
+        var top = app.createVector(0, size * .5 + app.noise(offset + 123483) * 100);
+        top.rotate(rot + app.PI);
+        top.add(pos);
+        top.add(size * mov, 0);
+
+        var posMov = 30;
+        var center = app.createVector(pos.x - size * mov * -1, pos.y);
+
+        center.add(
+            app.noise(offset + 1649) * posMov - posMov / 2,
+            app.noise(offset + 16546) * posMov - posMov / 2,
+        );
+
+
+        return {
+            top: top,
+            center: center,
+            bottom: bottom,
         }
+
     }
 
     move() {
