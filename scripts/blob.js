@@ -6,8 +6,9 @@ class Blob {
         this.size = size;
         this.color = color;
 
-        this.leftOffs = 415;
-        this.rightOffs = 1654;
+        this.leftOffs = app.random(4125123125123);
+        this.rightOffs = app.random(4125123125123);
+        this.genOffs = app.random(4125123125123);
     }
 
     draw() {
@@ -17,8 +18,14 @@ class Blob {
             pos,
             size,
             color,
-            leftOffs
+            leftOffs,
+
         } = this;
+
+        var mov = 40;
+        this.genOffs += 10000000;
+        pos = pos.copy().add(app.noise(this.genOffs + 45145));
+
 
         // izq 
         this.leftOffs += 0.01;
@@ -72,6 +79,8 @@ class Blob {
 
         // var leftDeltaRot = app.random(-.2, .27);
 
+        var posMov = 180;
+        pos = pos.copy().add(app.noise(offset + 2532) * posMov - posMov / 2, app.noise(offset + 25231245123) * posMov - posMov / 2);
 
 
         var bottom = app.createVector(0, size * .5 + app.noise(offset + 123483) * 100);
