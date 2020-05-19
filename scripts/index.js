@@ -7,10 +7,22 @@
         var bl;
         var dataB;
 
+        var screen;
         var color;
+
+        var font;
+        var op;
+
+        var dia;
+
 
 
         app.setup = function () {
+
+            op = 0;
+
+            dia = 0;
+
 
             fetch("./data/covid-19-5-10-2020.json").then(function (resp) {
                 return resp.json();
@@ -23,6 +35,10 @@
             var canvas = app.createCanvas(app.windowWidth, app.windowHeight);
             canvas.parent('p5canvasParent');
 
+            app.frameRate(30);
+
+            font = app.loadFont('./resources/font/AbrilFatface-Regular.ttf');
+            app.textFont(font);
 
             bg = app.color('#eafbe1');
             /*
@@ -43,12 +59,15 @@
                 app.color('#efc94a'),
             ];
             bl = [
-                new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
-                new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
-                new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
-                new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
-                new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
+                /*  new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
+                  new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
+                  new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
+                  new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), parseInt(app.random(200, 1000)), color[parseInt(app.random(0, color.length))]),
+                  */
+                new Blob(app, app.random(0, app.windowWidth), app.random(0, app.windowHeight), 0, color[parseInt(app.random(0, color.length))]),
             ];
+
+            screen = 1;
 
             console.log(parseInt(app.random(0, color.length)));
         }
@@ -56,13 +75,54 @@
         app.draw = function () {
 
 
-            app.background(bg);
 
-            for (let i = 0; i < bl.length; i++) {
-                bl[i].draw();
+            switch (screen) {
+
+                case 1:
+                    op += .3;
+
+                    app.background(bg);
+                    app.textSize(400);
+
+                    app.fill(50, 120, 130, op);
+                    app.textAlign(app.CENTER, app.CENTER);
+                    app.text('notitia', app.windowWidth * app.noise(app.mouseY / 1000), app.windowHeight / 2 * app.noise(app.mouseX / 2000));
+
+                    app.textSize(50);
+
+                    app.fill(200, 120, 130, op / 1.5);
+                    app.textAlign(app.CENTER, app.CENTER);
+                    app.text('datos vivos del COVID-19 en Colombia', app.windowWidth * app.noise(app.mouseY / 1500), app.windowHeight / 2 * app.noise(app.mouseX / 2300) + 250);
+                    if (app.keyIsPressed === true) {
+                        screen++;
+
+                    }
+
+                    break;
+
+                case 2:
+
+                    app.background(bg);
+                    app.textSize(90);
+
+                    app.noStroke();
+                    app.fill(200, 120, 130, 50);
+                    app.textAlign(app.CENTER, app.CENTER);
+                    app.text('día: ' + dia, app.windowWidth * app.noise(app.mouseY / 1500), app.windowHeight / 2 * app.noise(app.mouseX / 2300) + 250);
+
+                    for (let i = 0; i < bl.length; i++) {
+                        bl[i].draw();
+                        bl[i].sizePlus();
+                    }
+
+                    if (app.frameCount % 120 === 0) {
+                        dia += 1;
+                    }
+
+                    break;
+
+
             }
-
-
 
         }
 

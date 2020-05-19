@@ -75,6 +75,8 @@ class Blob {
             leftOffs
         } = this;
 
+
+
         var rot = app.noise(offset) * app.PI / 4 - app.PI / 8;
 
         // var leftDeltaRot = app.random(-.2, .27);
@@ -113,5 +115,12 @@ class Blob {
     move() {
 
         this.pos.set(mx, my);
+    }
+
+    sizePlus() {
+        if (this.app.frameCount % 10 === 0) {
+            this.size++;
+            console.log(this.size);
+        };
     }
 }
