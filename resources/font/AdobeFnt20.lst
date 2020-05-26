@@ -1,0 +1,102 @@
+%!Adobe-FontList 1.20
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:AbrilFatface-Regular
+FamilyName:Abril Fatface
+StyleName:Regular
+FullName:Abril Fatface
+MenuName:Abril Fatface
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:D:\Drive\UNI\DMI\4\Arte\trabajos\final\notitia\resources\Font\AbrilFatface-Regular.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:58372
+FileModTime:1589871842
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Win,1,Abril Fatface
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:AnoBold-Regular
+FamilyName:Ano Bold
+StyleName:Regular
+FullName:Ano Bold Regular
+MenuName:Ano Bold
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:D:\Drive\UNI\DMI\4\Arte\trabajos\final\notitia\resources\Font\AnoBold-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:20924
+FileModTime:1496374242
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Ano Bold Regular
+NameArray:0,Win,1,Ano Bold
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:AnoRegular-UpperLower
+FamilyName:Ano Regular
+StyleName:Upper Lower
+FullName:Ano Regular Upper Lower
+MenuName:Ano Regular Upper Lower
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:D:\Drive\UNI\DMI\4\Arte\trabajos\final\notitia\resources\Font\AnoRegular-UpperLower.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:17824
+FileModTime:1496374242
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Ano Regular Upper Lower
+NameArray:0,Win,1,Ano Regular Upper Lower
+NameArray:0,Win,16,Ano Regular
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:AnoRegular-WideItalic
+FamilyName:Ano Regular
+StyleName:Wide Italic
+FullName:Ano Regular Wide Italic
+MenuName:Ano Regular Wide Italic
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:D:\Drive\UNI\DMI\4\Arte\trabajos\final\notitia\resources\Font\AnoRegular-WideItalic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:17752
+FileModTime:1496374242
+WeightClass:400
+WidthClass:5
+AngleClass:1
+NameArray:0,Mac,4,Ano Regular Wide Italic
+NameArray:0,Win,1,Ano Regular Wide Italic
+NameArray:0,Win,16,Ano Regular
+%EndFont
+

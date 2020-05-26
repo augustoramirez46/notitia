@@ -117,9 +117,9 @@ class Blob {
         this.pos.set(mx, my);
     }
 
-    sizePlus() {
+    sizePlus(index) {
         if (this.app.frameCount % 10 === 0) {
-            this.size++;
+            this.size += index;
             console.log(this.size);
         };
     }
