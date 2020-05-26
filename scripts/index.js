@@ -85,7 +85,7 @@
 
             screen = 1;
 
-            console.log(nums);
+
         }
 
         app.draw = function () {
